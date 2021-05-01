@@ -19,8 +19,16 @@ class msgMethods {
       return { statusCode: 200, message: 'success', body: model };
     });
   }
+  // Gets all messages for a specific user
+  async getAllMsgs(senderName) {
+    try {
+      const response = Message.find({ sender: senderName });
+      return response;
+    } catch (e) {
+      return { error: 'Error finding message, ' + e };
+    }
+  }
   // Gets all unread messages for a specific user
-  // (include sender name in param)
   async getAllUnread(senderName) {
     try {
       const message = await Message.find({
@@ -38,15 +46,6 @@ class msgMethods {
       return message;
     } catch (e) {
       return { error: 'Error trying to delete message, ' + e };
-    }
-  }
-  // Gets all messages for a specific user
-  async getById(userId) {
-    try {
-      const response = Message.findById(userId);
-      return response;
-    } catch (e) {
-      return { error: 'Error finding message, ' + e };
     }
   }
   // Gets all messages stored in MongoDB (for testing)

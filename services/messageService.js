@@ -14,11 +14,11 @@ class message {
   deleteMessage = (id) => {
     return this.db.deleteMessage(id);
   };
-  getById = (id) => {
-    return this.db.get(id);
+  getAllMsgs = (senderName) => {
+    return this.db.getAllMsgs(senderName);
   };
-  getAllUnread = (userId) => {
-    return this.db.getAllUnread(userId);
+  getAllUnread = (senderName) => {
+    return this.db.getAllUnread(senderName);
   };
   getAll = () => {
     return this.db.getAll();
