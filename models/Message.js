@@ -1,19 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Message schema with required fields
 let messageSchema = new Schema(
   {
     message: {
       type: String,
-      required: true,
+      required: [true, 'Message body is required'],
     },
     sender: {
       type: String,
-      required: true,
+      required: [true, 'Sender name is required'],
     },
     receiver: {
       type: String,
-      required: true,
+      required: [true, 'Reciever name is required'],
     },
     subject: {
       type: String,

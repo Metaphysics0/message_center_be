@@ -6,7 +6,7 @@ require('./database/mongodb');
 const app = express();
 app.use(express.json());
 
-// routes middleware
+// routes
 app.use('/api', require('./routes/routes'));
 
 // server

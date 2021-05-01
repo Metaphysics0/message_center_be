@@ -7,10 +7,20 @@ const writeMessageDB = async (req, res) => {
     const newMsgDB = await Message.writeMessage(messageBody);
     return res.status(201).json({ id: newMsgDB._id, success: newMsgDB });
   } catch (e) {
-    res.status(500).json({ error: 'Error writing message, ' + e });
+    return res.status(500).json({ error: 'Error writing message, ' + e });
   }
 };
 
+// Get all messages
+const getAllMsgs = async (req, res) => {
+  const senderName = req.params.id;
+  try {
+    const response = await Message.getAllMsgs(senderName);
+    return res.status(201).json(response);
+  } catch (e) {
+    return res.status(500).json({ error: 'Unable to get messages, ' + e });
+  }
+};
 // Gets all unread messages
 const getUnreadMsgs = async (req, res) => {
   const senderName = req.params.id;
@@ -22,23 +32,13 @@ const getUnreadMsgs = async (req, res) => {
   }
 };
 
-const getAllMsgs = async (req, res) => {
-  const senderName = req.params.id;
-  try {
-    const response = await Message.getAllMsgs(senderName);
-    return res.status(201).json(response);
-  } catch (e) {
-    return res.status(500).json({ error: 'Unable to get messages, ' + e });
-  }
-};
-
 // Returns message as read
 const readMsg = async (req, res) => {
   try {
     const response = await Message.readMessage(req.params.id);
     return res.status(201).json(response);
   } catch (e) {
-    res.status(500).json({ error: 'Error reading message ' + e });
+    return res.status(500).json({ error: 'Error reading message ' + e });
   }
 };
 // deletes message
@@ -48,7 +48,7 @@ const deleteMsg = async (req, res) => {
     const response = await Message.deleteMessage(msgId);
     return res.status(201).json({ message: 'message successfully deleted', body: response });
   } catch (e) {
-    res.status(500).json({ error: 'Error deleting message, ' + e });
+    return res.status(500).json({ error: 'Error deleting message, ' + e });
   }
 };
 

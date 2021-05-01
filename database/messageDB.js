@@ -22,7 +22,7 @@ class msgMethods {
   // Gets all messages for a specific user
   async getAllMsgs(senderName) {
     try {
-      const response = Message.find({ sender: senderName });
+      const response = await Message.find({ sender: senderName });
       return response;
     } catch (e) {
       return { error: 'Error finding message, ' + e };
@@ -51,7 +51,7 @@ class msgMethods {
   // Gets all messages stored in MongoDB (for testing)
   async getAll() {
     try {
-      const response = Message.find();
+      const response = await Message.find();
       return response;
     } catch (e) {
       return { error: 'Something went wrong, ' + e };

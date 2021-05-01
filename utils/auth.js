@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+// create JWT
 exports.createJWT = (email, userId, duration) => {
   const payload = {
     email,
@@ -11,6 +12,7 @@ exports.createJWT = (email, userId, duration) => {
   });
 };
 
+// Verify JWT
 exports.verifyJWT = (token) => {
   return jwt.verify(token, 'secret');
 };
