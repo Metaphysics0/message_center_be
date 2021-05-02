@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "ee937934-c7db-4353-989c-62a8d8574fbe",
+		"name": "Herolo BE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nameless-brook-48333.herokuapp.com/api/get-all/:id",
+					"protocol": "https",
+					"host": [
+						"nameless-brook-48333",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-all",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "Get all read/unread messages from a specific user.\nInclude the sender name as a parameter\n\nexample:\n\nGET http://localhost:/8000/api/get-all/Ryan%20Roberts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Unreads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://nameless-brook-48333.herokuapp.com/api/get-unreads/:id",
+					"protocol": "https",
+					"host": [
+						"nameless-brook-48333",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"get-unreads",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "Get all unread messages from a specific user.\nInclude the sender name as a parameter\n\nexample:\n\nGET http://localhost:/8000/api/get-unreads/Ryan%20Roberts"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Message",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://nameless-brook-48333.herokuapp.com/api/delete-msg/608a9d8ddda84c0f4c:id",
+					"protocol": "https",
+					"host": [
+						"nameless-brook-48333",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"delete-msg",
+						"608a9d8ddda84c0f4c:id"
+					]
+				},
+				"description": "Delete message from MongoDB database\ninclude message ObjectID in the URL parameter.\n\ni.e. http://localhost:8000/api/delete-msg/608a9d8ddda84c0f4c50b05e"
+			},
+			"response": []
+		},
+		{
+			"name": "Read Message",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://nameless-brook-48333.herokuapp.com/api/read-msg/:id",
+					"protocol": "https",
+					"host": [
+						"nameless-brook-48333",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"read-msg",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "updates the 'messageRead' property in the message object in DB to 'true'"
+			},
+			"response": []
+		},
+		{
+			"name": "Write Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"This is a message!\",\n    \"sender\": \"Ryan Roberts\",\n    \"receiver\": \"Cat Roberts\",\n    \"subject\": \"This is my subject!!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nameless-brook-48333.herokuapp.com/api/write-msg",
+					"protocol": "https",
+					"host": [
+						"nameless-brook-48333",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"write-msg"
+					]
+				},
+				"description": "## Include the message body as JSON, in this format:\n\n```\n{\n    \"message\": \"This is a message!\",\n    \"sender\": \"Ryan Roberts\",\n    \"receiver\": \"Cat Roberts\",\n    \"subject\": \"This is my subject!!\"\n}\n```"
+			},
+			"response": []
+		}
+	]
+}
