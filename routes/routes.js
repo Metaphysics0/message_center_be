@@ -8,6 +8,11 @@ const {
   getAllMsgs,
 } = require('../controllers/messageCtrl');
 
+// To add JWT authentication:
+// include auth as the second param in the router.req() function
+// i.e. router.get('/get-all/:id', auth, getAllMsgs)
+const { auth } = require('../middlewares/auth');
+
 // REST API Routes
 router.get('/get-all/:id', getAllMsgs);
 router.get('/get-unreads/:id', getUnreadMsgs);
